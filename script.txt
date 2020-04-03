@@ -1,0 +1,35 @@
+CREATE TABLE Categories (
+  id int unsigned PRIMARY KEY,
+  name varchar(255)
+);
+
+CREATE TABLE Products (
+  id int unsigned PRIMARY KEY,
+  name varchar(255)
+);
+
+CREATE TABLE Categories_Products (
+  category_id int unsigned,
+  product_id int unsigned,
+  PRIMARY KEY (category_id, product_id),
+  FOREIGN KEY (category_id) REFERENCES Categories (id)
+   ON DELETE CASCADE
+   ON UPDATE CASCADE,
+  FOREIGN KEY (product_id) REFERENCES Products (id)
+   ON DELETE CASCADE
+   ON UPDATE CASCADE
+);
+
+INSERT INTO Categories (id, name) VALUES ('1', 'red'), ('2', 'blue');
+INSERT INTO Products (id, name) VALUES ('1', 'mittens'), ('2', 'boots');
+INSERT INTO Categories_Products
+  (category_id, product_id)
+  VALUES
+    (1, 1), -- red mittens
+    (1, 2), -- red boots
+    (2, 1), -- blue mittens
+    (2, 2)  -- blue boots
+;
+
+-- Enable foreign key support on SQLite
+PRAGMA foreign_keys = ON;
