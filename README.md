@@ -1,5 +1,12 @@
 # Foreign Key Constraints
-You can setup the sample data with [this script](script.txt).
+
+This example demonstrates the use of foreign key constraints on the following database.
+
+* Categories (id, name)
+* Products(id, name)
+* Categories_Products(category_id, product_id)
+
+The sample data can be found in [this script](script.txt).
 
 You can query the structure of a table using the SQL statement (in SQLite):
 ```sql
