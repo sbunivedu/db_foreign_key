@@ -52,8 +52,8 @@ SELECT * FROM Categories_Products;
 +-------------+------------+
 ```
 Use the data to answer the following questions.
-* What categories are the "mittens" product in?
-* What products are in the "blue" category?
+* What are the names of categories the "mittens" are in?
+* What are the names of products in the "blue" category?
 
 Experiment with foreign key constraints
 * Delete  a primary key
@@ -78,7 +78,7 @@ UPDATE Categories_Products SET category_id=4 where category_id=3;
 ```
 
 The following example demonstrates where the `SET NULL` policy makes more sense than `CASCADE` for a foreign key constraint on the following database:
-* Professors(prof_id, name, department_id)
+* Professors(prof_id, name)
 * Departments(department_id, name, chair_id)
 
 The sample data can be found in [this script](script1.txt).
@@ -88,7 +88,7 @@ What would happen if we delete a professor?
 DELETE FROM Professors WHERE prof_id = 1;
 ```
 
-The department remains, but its chair `(chair_id)` should become `NULL`. This makes sense — the department still exists, it just doesn’t currently have a chair.
+The department remains, but its chair `(chair_id)` should become `NULL`. This makes sense — the department still exists, it just doesn't currently have a chair.
 
 What happens if we change the policy to `ON DELETE CASCADE`?
 
