@@ -1,0 +1,21 @@
+CREATE TABLE Professors (
+    prof_id INT PRIMARY KEY,
+    name VARCHAR(50)
+);
+
+CREATE TABLE Departments (
+    dept_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    chair_id INT,
+    FOREIGN KEY (chair_id)
+        REFERENCES Professors(prof_id)
+        ON DELETE SET NULL
+);
+
+INSERT INTO Professors VALUES
+(1, 'Dr. Smith'),
+(2, 'Dr. Brown');
+
+INSERT INTO Departments VALUES
+(10, 'Computer Science', 1),
+(20, 'Mathematics', 2);
